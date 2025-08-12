@@ -1,0 +1,131 @@
+body {
+  background: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.photo-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect for desktop */
+@media (hover: hover) {
+  .photo:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* Add these styles at the bottom */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  color: #ccc;
+}
+
+#animation-container {
+  position: fixed;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.animation-image {
+  position: fixed;
+  object-fit: cover;
+  border-radius: 4px;
+  transition: 
+    top 0.5s ease,
+    left 0.5s ease,
+    width 0.5s ease,
+    height 0.5s ease,
+    border-radius 0.5s ease;
+}
+
+/* Update modal transitions */
+.modal {
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0);
+  transition: 
+    opacity 0.3s ease,
+    visibility 0.3s,
+    background-color 0.3s ease,
+    backdrop-filter 0.3s ease;
+}
+
+.modal.show {
+  visibility: visible;
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+}
+
+.modal-content, .close-btn {
+  opacity: 0;
+  transition: opacity 0.3s ease 0.2s;
+}
+
+.modal.show .modal-content, 
+.modal.show .close-btn {
+  opacity: 1;
+}
